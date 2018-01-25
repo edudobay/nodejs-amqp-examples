@@ -1,0 +1,65 @@
+{
+  "name": "amqp-examples",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "prestart": "npm run --silent build",
+    "start": "node dist/index.js",
+    "dev": "nodemon --exec \"node -r babel-register\"",
+    "clean": "rimraf dist",
+    "build": "npm run clean && mkdir -p dist && babel src -s -D -d dist",
+    "test": "ava"
+  },
+  "author": "Eduardo Dobay <edudobay@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "ava": "^0.24.0",
+    "babel-register": "^6.26.0",
+    "nodemon": "^1.14.11",
+    "standard": "^10.0.3",
+    "superkoa": "^1.0.3"
+  },
+  "dependencies": {
+    "@types/amqplib": "^0.5.6",
+    "amqplib": "^0.5.2",
+    "awilix": "^3.0.4",
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "glob": "^7.1.2",
+    "js-yaml": "^3.10.0",
+    "koa": "^2.4.1",
+    "koa-body": "^2.5.0",
+    "koa-router": "^7.3.0",
+    "rimraf": "^2.6.2"
+  },
+  "ava": {
+    "files": [
+      "test/**/*.test.js"
+    ],
+    "source": [
+      "src/**/*.js"
+    ],
+    "verbose": true,
+    "babel": "inherit",
+    "require": [
+      "babel-register"
+    ]
+  },
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ],
+    "plugins": [
+      "transform-object-rest-spread"
+    ]
+  }
+}
